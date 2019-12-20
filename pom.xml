@@ -41,7 +41,7 @@
         </plugins>
     </build>
     <scm>
-        <developerConnection>scm:git:oerrarhb@github.com:oerrarhb/sfg-pet-clinic.git</developerConnection>
+        <developerConnection>scm:git:git@github.com:oerrarhb/sfg-pet-clinic.git</developerConnection>
         <tag>sfg-pet-clinic-0.0.4</tag>
     </scm>
 
