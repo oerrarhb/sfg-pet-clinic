@@ -25,10 +25,10 @@ public class Pet {
     }
 
     public LocalDate getLocalDate() {
-        return localDate;
+        return birthDate;
     }
 
     public void setLocalDate(LocalDate localDate) {
-        this.localDate = localDate;
+        this.birthDate = localDate;
     }
 }
