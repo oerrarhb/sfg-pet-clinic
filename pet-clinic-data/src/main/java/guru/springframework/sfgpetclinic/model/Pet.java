@@ -1,34 +1,22 @@
 package guru.springframework.sfgpetclinic.model;
 
 import java.time.LocalDate;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
+@Builder
 public class Pet extends BaseEntity {
 
     private PetType petType;
     private Owner owner;
     private LocalDate birthDate;
-
-    public PetType getPetType() {
-        return petType;
-    }
-
-    public void setPetType(PetType petType) {
-        this.petType = petType;
-    }
-
-    public Owner getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Owner owner) {
-        this.owner = owner;
-    }
-
-    public LocalDate getLocalDate() {
-        return birthDate;
-    }
-
-    public void setLocalDate(LocalDate localDate) {
-        this.birthDate = localDate;
-    }
 }
