@@ -1,6 +1,5 @@
 package guru.springframework.sfgpetclinic.model;
 
-import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,6 +13,6 @@ import lombok.Setter;
 @Setter
 @Getter
 @Builder
-public class Vet extends Person {
-    private Set<Speciality> specialities;
+public class Speciality extends BaseEntity{
+    private String description;
 }
