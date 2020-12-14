@@ -1,9 +1,7 @@
-package guru.springframework.sfgpetclinic.services.map.springdatajpa;
+package guru.springframework.sfgpetclinic.services.springdatajpa;
 
 import guru.springframework.sfgpetclinic.model.Owner;
 import guru.springframework.sfgpetclinic.model.repositories.OwnerRepository;
-import guru.springframework.sfgpetclinic.model.repositories.PetRepository;
-import guru.springframework.sfgpetclinic.model.repositories.PetTypeRepository;
 import guru.springframework.sfgpetclinic.services.OwnerService;
 import java.util.HashSet;
 import java.util.Optional;
