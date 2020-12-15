@@ -1,7 +1,10 @@
 package guru.springframework.sfgpetclinic.services.springdatajpa;
 
 import guru.springframework.sfgpetclinic.model.Owner;
+import guru.springframework.sfgpetclinic.model.Pet;
 import guru.springframework.sfgpetclinic.model.repositories.OwnerRepository;
+import guru.springframework.sfgpetclinic.model.repositories.PetRepository;
+import guru.springframework.sfgpetclinic.model.repositories.PetTypeRepository;
 import guru.springframework.sfgpetclinic.services.OwnerService;
 import java.util.HashSet;
 import java.util.Optional;
@@ -14,9 +17,13 @@ import org.springframework.stereotype.Service;
 public class OwnerSDJpaService implements OwnerService {
 
     private final OwnerRepository ownerRepository;
+    private final PetTypeRepository petTypeRepository;
+    private final PetRepository petRepository;
 
-    public OwnerSDJpaService(OwnerRepository ownerRepository) {
+    public OwnerSDJpaService(OwnerRepository ownerRepository, PetTypeRepository petTypeRepository, PetRepository petRepository) {
         this.ownerRepository = ownerRepository;
+        this.petTypeRepository = petTypeRepository;
+        this.petRepository = petRepository;
     }
 
     @Override
@@ -33,9 +40,10 @@ public class OwnerSDJpaService implements OwnerService {
     }
 
     @Override
-    public Owner save(Owner object) {
-        return ownerRepository.save(object);
+    public Owner save(Owner owner) {
+        return ownerRepository.save(owner);
     }
+
 
     @Override
     public void delete(Owner object) {

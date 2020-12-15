@@ -7,11 +7,14 @@ import guru.springframework.sfgpetclinic.model.Speciality;
 import guru.springframework.sfgpetclinic.model.Vet;
 import guru.springframework.sfgpetclinic.model.Visit;
 import guru.springframework.sfgpetclinic.services.OwnerService;
+import guru.springframework.sfgpetclinic.services.PetService;
 import guru.springframework.sfgpetclinic.services.PetTypeService;
 import guru.springframework.sfgpetclinic.services.SpecialityService;
 import guru.springframework.sfgpetclinic.services.VetService;
 import guru.springframework.sfgpetclinic.services.VisitService;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -23,14 +26,16 @@ public class DataLoader implements CommandLineRunner {
     private final PetTypeService petTypeService;
     private final SpecialityService specialityService;
     private final VisitService visitService;
+    private final PetService petService;
 
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService, VisitService visitService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService, VisitService visitService, PetService petService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialityService = specialityService;
         this.visitService = visitService;
+        this.petService = petService;
     }
 
 
@@ -43,10 +48,12 @@ public class DataLoader implements CommandLineRunner {
     }
 
     private void loadData() {
-        PetType dog = new PetType().withName("Dog");
+        PetType dog = new PetType();
+        dog.setName("Dog");
         PetType savedDogType = petTypeService.save(dog);
 
-        PetType cat = new PetType().withName("Cat");
+        PetType cat = new PetType();
+        cat.setName("Cat");
         PetType savedCatType = petTypeService.save(cat);
 
         Speciality radiology = new Speciality()
@@ -68,15 +75,20 @@ public class DataLoader implements CommandLineRunner {
         owner1.setCity("Miami");
         owner1.setTelephone("1234123546");
 
-        Pet mikesPet = new Pet()
-                .withPetType(savedDogType)
-                .withOwner(owner1)
-                .withBirthDate(LocalDate.now())
-                .withName("Rosco");
-
+        Pet mikesPet = new Pet();
+        mikesPet.setPetType(savedDogType);
+        mikesPet.setOwner(owner1);
+        mikesPet.setBirthDate(LocalDate.now());
+        mikesPet.setName("Rosco");
         owner1.getPets().add(mikesPet);
-
         ownerService.save(owner1);
+
+        System.out.println(owner1.getPets().add(mikesPet));
+        System.out.println(owner1.getId());
+        for(Pet peti : owner1.getPets())
+        {
+            System.out.println(peti.getId());
+        }
 
 
         Owner owner2 = new Owner();
@@ -86,18 +98,20 @@ public class DataLoader implements CommandLineRunner {
         owner2.setCity("Miami");
         owner2.setTelephone("1234123546");
 
-        Pet FionaPet = new Pet()
-                .withPetType(savedCatType)
-                .withOwner(owner2)
-                .withBirthDate(LocalDate.now())
-                .withName("Catty");
-        owner2.getPets().add(FionaPet);
+        Pet fionaPet = new Pet();
+                fionaPet.setPetType(savedCatType);
+        fionaPet.setOwner(owner2);
+        fionaPet.setBirthDate(LocalDate.now());
+        fionaPet.setName("Catty");
+        owner2.getPets().add(fionaPet);
         ownerService.save(owner2);
 
         Visit catVisit = new Visit();
         catVisit.setDate(LocalDate.now());
-        catVisit.setPet(FionaPet);
+        catVisit.setPet(fionaPet);
         catVisit.setDescription("sneezy Kitty");
+
+        visitService.save(catVisit);
 
         System.out.println("Loaded Owners ....");
 
