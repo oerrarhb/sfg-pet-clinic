@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,6 +25,7 @@ import lombok.With;
 @Setter
 @Getter
 @With
+@Builder
 @Table(name = "pets")
 public class Pet extends BaseEntity {
     @Column(name = "name")
