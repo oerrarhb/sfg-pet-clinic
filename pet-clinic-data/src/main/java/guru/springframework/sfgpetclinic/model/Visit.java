@@ -20,7 +20,6 @@ import lombok.With;
 @Getter
 @With
 @Entity
-@Builder
 @Table(name = "visits")
 public class Visit extends BaseEntity {
     @Column(name = "date")
