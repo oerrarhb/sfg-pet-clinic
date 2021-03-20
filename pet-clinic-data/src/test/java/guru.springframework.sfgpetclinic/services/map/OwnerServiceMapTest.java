@@ -1,12 +1,13 @@
-package guru.springframework.sfgpetclinic.services.map;
+package services.map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import guru.springframework.sfgpetclinic.model.Owner;
-import org.junit.jupiter.api.BeforeAll;
+import guru.springframework.sfgpetclinic.services.map.OwnerServiceMap;
+import guru.springframework.sfgpetclinic.services.map.PetServiceMap;
+import guru.springframework.sfgpetclinic.services.map.PetTypeMapService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 
 
 class OwnerServiceMapTest {
